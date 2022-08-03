@@ -16,6 +16,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
         primarySwatch: Colors.blue,
+        appBarTheme: const AppBarTheme(
+          backgroundColor: Colors.blue,
+          titleTextStyle: TextStyle(
+              color: Colors.white,
+              fontSize: 18)
+        )
       ),
       initialRoute: "/",
       onGenerateRoute: RouteGenerator.generateRoute,
