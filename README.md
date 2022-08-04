@@ -1,16 +1,10 @@
 # employee_book
 
-A new Flutter project.
+Learn SQLite with Drift Package
 
-## Getting Started
+## Course
 
-This project is a starting point for a Flutter application.
+A Project from Udemy and the instructor Binary IT Solution.
 
-A few resources to get you started if this is your first Flutter project:
+Here's the link to the [Course](https://www.udemy.com/course/flutter-sqlite-database-i/learn/lecture/30874230?start=0#overview).
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
