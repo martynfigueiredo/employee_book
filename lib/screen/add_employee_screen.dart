@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import '../widget/custom_text_form_field.dart';
 
 class AddEmployeeScreen extends StatefulWidget {
@@ -13,6 +14,7 @@ class _AddEmployeeScreenState extends State<AddEmployeeScreen> {
   final TextEditingController _firstNameController = TextEditingController();
   final TextEditingController _lastNameController = TextEditingController();
   final TextEditingController _dateOfBirthController = TextEditingController();
+  DateTime? _dateOfBirth;
 
   @override
   Widget build(BuildContext context) {
@@ -76,7 +78,7 @@ class _AddEmployeeScreenState extends State<AddEmployeeScreen> {
     final initialDate = DateTime.now();
     final newDate = await showDatePicker(
       context: context,
-      initialDate: initialDate,
+      initialDate: _dateOfBirth ?? initialDate,
       firstDate: DateTime(DateTime.now().year - 100),
       lastDate: DateTime(DateTime.now().year + 1),
       builder: (context, child) => Theme(
@@ -95,7 +97,9 @@ class _AddEmployeeScreenState extends State<AddEmployeeScreen> {
     }
 
     setState(() {
-      _dateOfBirthController.text = newDate.toIso8601String();
+      _dateOfBirth = newDate;
+      String dob = DateFormat("dd/MM/yyyy").format(newDate);
+      _dateOfBirthController.text = dob;
     });
   }
 }
