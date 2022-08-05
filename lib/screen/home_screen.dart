@@ -16,9 +16,8 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(
-          onPressed: (){
+          onPressed: () {
             Navigator.pushNamed(context, '/add_employee');
-
           },
           icon: const Icon(Icons.add),
           label: const Text("Add Employee")),

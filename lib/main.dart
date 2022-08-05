@@ -12,17 +12,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Employee Book',
       theme: ThemeData(
-        useMaterial3: true,
-        primarySwatch: Colors.blue,
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.blue,
-          titleTextStyle: TextStyle(
-              color: Colors.white,
-              fontSize: 18)
-        )
-      ),
+          useMaterial3: true,
+          primarySwatch: Colors.blue,
+          appBarTheme: const AppBarTheme(
+              backgroundColor: Colors.blue,
+              titleTextStyle: TextStyle(color: Colors.white, fontSize: 18))),
       initialRoute: "/",
       onGenerateRoute: RouteGenerator.generateRoute,
     );
