@@ -27,6 +27,16 @@ class _AddEmployeeScreenState extends State<AddEmployeeScreen> {
   }
 
   @override
+  void dispose() {
+    _db.close();
+    _userNameController.dispose();
+    _firstNameController.dispose();
+    _lastNameController.dispose();
+    _dateOfBirthController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -35,33 +45,7 @@ class _AddEmployeeScreenState extends State<AddEmployeeScreen> {
         actions: [
           IconButton(
               onPressed: () {
-                final entity = EmployeeCompanion(
-                  userName: drift.Value(_userNameController.text),
-                  firstName: drift.Value(_userNameController.text),
-                  lastName: drift.Value(_userNameController.text),
-                  dateOfBirth: drift.Value(_dateOfBirth!),
-                );
-
-                _db.insertEmployee(entity).then(
-                      (value) =>
-                          ScaffoldMessenger.of(context).showMaterialBanner(
-                        MaterialBanner(
-                            backgroundColor: Colors.pink,
-                            content: Text(
-                              'New employee inserted: $value',
-                              style: const TextStyle(color: Colors.white),
-                            ),
-                            actions: [
-                              TextButton(
-                                  onPressed: () => ScaffoldMessenger.of(context)
-                                      .hideCurrentMaterialBanner(),
-                                  child: const Text(
-                                    'Close',
-                                    style: TextStyle(color: Colors.white),
-                                  )),
-                            ]),
-                      ),
-                    );
+                addEmployee();
               },
               icon: const Icon(Icons.save))
         ],
@@ -130,5 +114,34 @@ class _AddEmployeeScreenState extends State<AddEmployeeScreen> {
       String dob = DateFormat("dd/MM/yyyy").format(newDate);
       _dateOfBirthController.text = dob;
     });
+  }
+
+  void addEmployee() {
+    final entity = EmployeeCompanion(
+      userName: drift.Value(_userNameController.text),
+      firstName: drift.Value(_userNameController.text),
+      lastName: drift.Value(_userNameController.text),
+      dateOfBirth: drift.Value(_dateOfBirth!),
+    );
+
+    _db.insertEmployee(entity).then(
+          (value) => ScaffoldMessenger.of(context).showMaterialBanner(
+            MaterialBanner(
+                backgroundColor: Colors.pink,
+                content: Text(
+                  'New employee inserted: $value',
+                  style: const TextStyle(color: Colors.white),
+                ),
+                actions: [
+                  TextButton(
+                      onPressed: () => ScaffoldMessenger.of(context)
+                          .hideCurrentMaterialBanner(),
+                      child: const Text(
+                        'Close',
+                        style: TextStyle(color: Colors.white),
+                      )),
+                ]),
+          ),
+        );
   }
 }
