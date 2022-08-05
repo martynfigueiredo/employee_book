@@ -486,7 +486,7 @@ packages:
     source: hosted
     version: "1.8.2"
   sqlite3:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: sqlite3
       url: "https://pub.dartlang.org"
