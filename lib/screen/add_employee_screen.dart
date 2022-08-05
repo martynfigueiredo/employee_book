@@ -1,3 +1,4 @@
+import 'package:employee_book/widget/custom_date_picker_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../widget/custom_text_form_field.dart';
@@ -53,19 +54,12 @@ class _AddEmployeeScreenState extends State<AddEmployeeScreen> {
           const SizedBox(
             height: 8.0,
           ),
-          TextFormField(
-            controller: _dateOfBirthController,
-            keyboardType: TextInputType.name,
-            decoration: const InputDecoration(
-                border: OutlineInputBorder(), label: Text("Date of Birth")),
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return "Date of Birth cannot be empty!";
-              }
-              return null;
-            },
-            onTap: () => pickDateOfBirth(context),
-          ),
+          CustomDatePickerFormField(
+              controller: _dateOfBirthController,
+              txtLabel: "Date of Birth",
+              callback: () {
+                pickDateOfBirth(context);
+              }),
           const SizedBox(
             height: 8.0,
           ),
